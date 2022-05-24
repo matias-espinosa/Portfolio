@@ -1,0 +1,928 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Space+Mono&display=swap');
+
+* {
+    padding: 0%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+p {
+    color: black;
+    font-size: 1.4rem;
+    margin-top: 5px;
+    line-height: 2.5rem;
+    font-weight: 300;
+    letter-spacing: .05rem;
+    /* max-width: 1150px; possible solution, to parragraph to big on monitor*/
+}
+
+.section_title {
+    font-size: 4rem;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 17px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    text-align: center;
+}
+
+.section_title span{
+    color: red;
+}
+
+.cta {
+    /* Buttons stuff */
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: transparent;
+    border: 2px solid red;
+    font-size: 1.5rem;
+    color: white;
+    font-weight:900;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 30px;
+    transition: .3s ease;
+    transition-property: background-color, color;
+    }
+    
+.cta:hover {
+    /* Buttons hover*/
+    color: black;
+    background-color: rgb(255, 255, 255);
+    }
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand h1{
+    font-size: 2em;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: .2rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.brand h1 span {
+    color:red;
+}
+
+.smallTitles {
+    font-size: 2rem;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    text-align: center;
+}
+
+.smallTitles span{
+    color: red;
+}
+
+/*======================================================================================  
+================================== Header Section ========================================
+======================================================================================*/
+
+#header {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: auto;
+    
+}
+
+#header .header {
+    min-height: 8vh;
+    background-color: rgb(0, 0, 0);
+    transition: .3s ease backgroud-color;
+}
+
+ /*------------------------- NAV BAR -------------------------*/
+
+#header .nav_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+#header .nav_list ul{
+    list-style: none;
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    width: 100vw;
+    height: 100vh;
+    left: 100%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: .5s ease left;
+}
+#header .nav_list ul.active {
+    left: 0;
+}
+
+
+#header .nav_list ul a {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: .2rem;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    padding: 20px;
+    display: block;
+}
+
+#header .nav_list ul a::after {
+    content: attr(data_after);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: rgba(216, 216, 216, 0.116);
+    font-size: 6.5rem;
+    font-weight: 900;
+    letter-spacing: 50px;
+    z-index: -1;
+    transition: .3s ease letter-spacing;
+}
+
+#header .nav_list ul li:hover a::after{
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+}
+
+#header .nav_list ul li:hover a{
+        color: red;
+    
+    }
+    
+
+ /*------------------------- HAMBURGUER -------------------------*/
+#header .hamburguer {
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+    border: 3px solid white;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    transform: scale(.8);
+    margin-right: 20px;
+}
+
+#header .hamburguer:after{
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid white;
+    animation: hamburger_pulse 1.5s ease infinite;
+}
+
+#header .hamburguer .bar {
+    height: 2px;
+    width: 30px;
+    position: relative;
+    background-color: white;
+    z-index: -1;
+}
+
+#header .hamburguer .bar::after,
+#header .hamburguer .bar::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    background-color: white;
+    transition: .3s ease;
+    transition-property: top, bottom;
+}
+
+#header .hamburguer .bar::after {
+    top: 8px;
+}
+
+#header .hamburguer .bar::before {
+    bottom: 8px;
+}
+
+#header .hamburguer.active .bar::before {
+    bottom: 0;
+}
+#header .hamburguer.active .bar::after {
+    top: 0;
+}
+
+
+
+/*======================================================================================  
+================================== Hero Section ========================================
+======================================================================================*/
+
+#hero {
+/* background image */
+    background-image: url(img/background.png);
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    z-index: 1;
+}
+#hero::after {
+/* Creates a black layer with transparency, infront of the iamge */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: .8;
+    z-index: -1;
+}
+
+#hero .hero {
+    max-width: 1200px;
+    padding: 0 30px;
+    justify-content: flex-start;
+}
+
+#hero h1 {
+/* Main text 'Helo, My...' */
+    display: block;
+    width: fit-content;
+    font-size: 4rem;
+    position: relative;
+    color:transparent;
+    animation: text_reveal .5s ease forwards;
+    animation-delay: 1s;
+}
+/* Animations applied, choosing when each h1 will appear */
+#hero h1:nth-child(1) {
+    animation-delay: 1s;
+}
+#hero h1:nth-child(2) {
+    animation-delay: 2s;
+}
+#hero h1:nth-child(3) {
+    font-weight: 500;
+    animation: text_reveal_name .5s ease forwards;
+    animation-delay: 3s;
+}
+
+#hero h1 span {
+/* Box animation on title Hello, My....' */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: black;
+    animation: text_reveal_box 1s ease;
+    animation-delay: .5s;
+}
+/* Animations applied, selecting when each span appears' */
+#hero h1:nth-child(1) span {
+    animation-delay: .5s;
+}
+#hero h1:nth-child(2) span {
+    animation-delay: 1.5s;
+}
+#hero h1:nth-child(3) span {
+    animation-delay: 2.5s;
+}
+
+/*======================================================================================  
+================================== Drawings Section ====================================
+======================================================================================*/
+#services .services{
+    flex-direction: column;
+    text-align: center;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 100px 20px;    
+}
+
+#services .service_bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+#services .service_top {
+    max-width: 500px;
+    margin: 0 auto;
+
+}
+
+
+/* Containers of images with section*/
+#services .service_item {
+    flex-basis: 80%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px;
+    border-radius: 10px;
+    background-size: 100%;
+    background-position: center;
+    margin: 10px 5%;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    
+}
+/* Black block with opacity on the images */
+#services .service_item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: .7;
+    z-index: -1;
+    transition: .3s ease;
+    transition-property: background-color, opacity;
+}
+
+/* Remove black block with opacity from the images */
+#services .service_item:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: .1;
+}
+
+/* Different collection images */
+#services .service_item:nth-child(1) {
+    background-image: url(img/square.png);
+}
+
+#services .service_item:nth-child(2) {
+    background-image: url(img/small_sketchbook.png);    
+}
+
+#services .service_item:nth-child(3) {
+    background-image: url(img/medium_sketchbook.png);    
+}
+
+#services .service_item:nth-child(4) {
+    background-image: url(img/miscellaneous.png);    
+}
+
+
+#services .service_item h2 {
+    display: flex;
+    justify-content: center;
+    padding: 10px 30px;
+    font-size: 1.5rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight:900;
+    letter-spacing: .1rem;
+    border:2px solid red ;
+    background-color: black ;
+    transition: .3s ease;
+    transition-property: background-color, color;
+    cursor: pointer;
+    
+}
+
+/* BETTER WITHOUTH IT
+#services .service_item h2:hover {
+/* Button hover
+    color: white;
+    background-color: black;
+}
+*/
+
+/*======================================================================================  
+================================== Carousel Section ========================================
+======================================================================================*/
+
+#carousel .carousel {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin: 250px auto;    
+}
+
+#carousel .collectionDescription{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#carousel .carousel__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#carousel .carousel__track-container {
+    background-color: aqua;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#carousel .carousel__track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 100%;
+    transition: transform 250ms ease-in;
+}
+
+#carousel .carousel__slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#carousel .carousel__button  {
+    position: absolute;
+    top: 115%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+#carousel .carousel__button--left {
+    left: -18px;
+} 
+
+#carousel .carousel__button--right {
+    right: -18px;
+} 
+
+#carousel .carousel__button img {
+    width: 20px;
+}
+
+#carousel .carousel__nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#carousel .carousel__indicator {
+    border: 0;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0,0,0,.3);
+    margin: 0 12px;
+    cursor: pointer;
+}
+
+#carousel .carousel__indicator.current-slide {
+    background: rgba(0,0,0,0.75);
+}
+
+#carousel .is-hidden {
+    display: none;
+}
+
+/*======================================================================================  
+================================= About Section =================================
+======================================================================================*/
+
+#about .about {
+    flex-direction: column-reverse;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px;
+}
+/* ////////////////////////NOT IN USE, check class on index.html and remove if needed
+#about .col_right .cta {
+    color:black;
+}
+
+#about .col_right .cta:hover {
+    color:white;
+    background-color: black;
+}
+*/
+
+#about .col_left .about_img {
+    margin-top: 40px;
+}
+
+/*======================================================================================  
+===================================== Contact Section =======================================
+======================================================================================*/
+
+#contact .contact {
+    flex-direction: column; /*sets the icons below Contact Info*/
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 180px;
+}
+#contact .contact_items {
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0px 0px 18px 0 black;
+    padding: 0.5em 2.2em ;
+    text-decoration: none;
+    margin-top: 2em;
+}
+
+#contact .social {
+    margin-top: 8.5px;
+}
+
+#contact .social_icon {
+    margin: 20px;
+    color: black;
+    font-size: 3em;
+    text-align: center;
+}
+
+#contact .social_icon:hover {
+  color: rgb(255, 0, 0);
+  transition: 0.3s ease;
+}
+
+/*--------------FORM---------------*/   
+
+#contact .containerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+/*
+/////////////////////PROBABLY DONT NEEDED////////////////////////////
+#contact .containerForm form .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+*/ 
+
+#contact form .user-details .input-box { 
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+#contact .user-details .input-box .details {
+    font-weight: 300;
+}
+
+#contact .user-details .input-box input{
+    height: 30px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    font-size: 1.5rem;
+    margin-top: 5px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+#contact .user-details .input-box input:focus{
+    outline: 0;
+    border-color: black;
+}
+
+#contact .user-details .input-box.success input{
+   border-color: rgb(0, 0, 0);
+}
+
+#contact .user-details .input-box.error input{
+    border-color: rgb(255, 0, 0);
+ }
+
+ #contact .user-details .input-box .error{
+     color: red;
+     font-size: 9px;
+     height: 13px;
+ }
+
+
+
+#contact form .button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contact form .button input{
+    display: inline-block;
+    width: 94%;
+    padding: 10px 30px;
+    background-color: transparent;
+    border: 2px solid red;
+    font-size: 1.5rem;
+    color:black;
+    font-weight:900;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    transition: .3s ease;
+    transition-property: background-color, color;
+}
+
+#contact form .button input:hover {
+    /* Buttons hover*/
+    color: white;
+    background-color: black;
+    }
+
+
+
+
+/*======================================================================================  
+===================================== Footer =======================================
+======================================================================================*/
+
+#footer {
+    background-color: black;
+}
+
+#footer .footer {
+    min-height: 50px;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+#footer h1{
+    font-size: 2.8rem;
+    letter-spacing: .5rem;
+}
+
+#footer h2 {
+    color: white;
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: 1.4rem;
+    margin-top: 10px;
+    text-align: center;
+    padding-left: 10px; /*<<<<<<Workaround<<<<<<<<REVISAR PORQUE NO SE CENTRA EL TEXTO*/
+}
+
+#footer p {
+    color: white;
+    font-size: 1.2rem;
+    letter-spacing: .1rem;
+}
+
+
+/*======================================================================================  
+===================================== Animations =======================================
+======================================================================================*/
+
+@keyframes hamburger_pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.4);
+    }
+}
+
+@keyframes text_reveal_box {
+    50% {
+        width: 100%;
+        left: 0;
+    }
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+
+@keyframes text_reveal {
+    100% {
+        color: white
+    }
+    
+}
+
+@keyframes text_reveal_name {
+    100% {
+        color: red;
+        font-weight: 500;
+    }
+    
+}
+
+/*======================================================================================  
+==================================== Media Queries =====================================
+======================================================================================*/
+
+/*tablet*/
+@media screen and (min-width: 768px){
+    .cta {
+        font-size: 2.5rem;
+        padding: 20px 60px;
+    }
+    h1.section_title {
+        font-size: 5rem;
+    }
+    /*Hero*/
+    #hero h1 {
+         font-size: 6rem;
+     }
+    /*Services*/
+    #Services .services {
+        min-height: 750px;
+    }
+    #services .service_bottom .service_item {
+         flex-basis: 45%;
+         margin: 1.5%;
+     }
+
+    #services .service_top {
+        max-width: 800px;
+    }
+     /*About*/
+     #about .about {
+         flex-direction: row;
+     }
+     #about .col_left {
+         margin: 60px;
+     }
+     #about .about_img {
+         width: 250px;
+     }
+
+     #about .col_right {
+         text-align: left;
+         padding: 30px;
+     }
+     #about .col_right h1 {
+         text-align: left;
+     }
+
+     /*Contact*/
+     #contact .contact_items {
+        padding: 0.5em 20em;
+    }
+
+    /* Small titles */
+
+    .smallTitles {
+        font-size: 3rem;
+    }
+
+
+    /* Carousel */
+       #carousel .carousel {
+        width: 550px;
+        height: 550px;
+    }
+    
+    #carousel .carousel__button img {
+        width: 30px;
+    }
+
+    #carousel .carousel__button  {
+        top: 80%;
+    }
+
+    #carousel .carousel__button--left {
+        left: -70px;
+    } 
+    
+    #carousel .carousel__button--right {
+        right: -70px;
+    } 
+}
+ /*End tablet*/
+
+/*Desktop*/
+@media only screen and (min-width: 1200px) {
+    /*header*/
+    #header .hamburguer {
+        display: none;
+    }
+
+    #header .nav_list ul {
+        position: initial;
+        display: block;
+        height: auto;
+        width: fit-content;
+        background-color: transparent;
+    }
+
+    #header .nav_list ul li {
+        display: inline-block;
+    }
+    #header .nav_list ul a::after{
+        display: none
+    }
+    #header .nav_list ul li a {
+        font-size: 1.8rem;
+    }
+    /* End header */
+
+    /* Services */
+    #services .service_bottom{
+        width: 100%;
+    }
+
+    #services .service_bottom .service_item {
+        margin: 1%;
+        flex-basis: 60%;
+    }
+
+    #services .service_top {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    #services .service_item {
+        padding: 50px 20%;
+    }
+
+    /* Small titles */
+
+    .smallTitles {
+        font-size: 3.5rem;
+    }
+
+    /* Carousel */
+    #carousel .carousel {
+        width: 750px;
+        height: 750px;
+    }
+    
+    #carousel .carousel__button img {
+        width: 40px;
+    }
+
+    #carousel .carousel__button  {
+        top: 70%;
+    }
+
+    #carousel .carousel__button--left {
+        left: -50px;
+    } 
+    
+    #carousel .carousel__button--right {
+        right: -50px;
+    } 
+}
